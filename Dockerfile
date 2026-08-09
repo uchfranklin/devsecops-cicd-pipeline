@@ -4,7 +4,7 @@ COPY requirements.txt .
 RUN pip install --no-cache-dir --prefix=/install -r requirements.txt
 
 FROM python:3.11-slim
-RUN python -m pip install --no-cache-dir wheel==0.46.2
+RUN python -m pip install --no-cache-dir --upgrade wheel==0.46.2 jaraco.context==6.1.0.
 RUN useradd --create-home --uid 10001 appuser
 WORKDIR /app
 COPY --from=builder /install /usr/local
